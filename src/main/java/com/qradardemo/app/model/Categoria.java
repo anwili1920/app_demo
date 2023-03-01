@@ -1,7 +1,7 @@
 package com.qradardemo.app.model;
 import javax.persistence.*;
 import lombok.*;
-import java.util.List;
+//import java.util.List;
 
 @Entity
 @Table(name="categorias")

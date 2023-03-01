@@ -1,5 +1,5 @@
 package com.qradardemo.app.model;
-import java.util.List;
+//import java.util.List;
 
 import javax.persistence.*;
 import lombok.*;

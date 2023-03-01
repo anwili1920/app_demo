@@ -1,5 +1,5 @@
 package com.qradardemo.app.model;
-import java.util.List;
+//import java.util.List;
 
 import javax.persistence.*;
 import lombok.*;
@@ -8,6 +8,7 @@ import lombok.*;
 @Getter @Setter @NoArgsConstructor
 public class Usuario {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id_usuario")
     private Integer id;
 

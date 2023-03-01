@@ -7,8 +7,8 @@ import lombok.*;
 @Table(name="compras_productos")
 @Getter @Setter @NoArgsConstructor
 public class ComprasProducto {
-    // @EmbeddedId
-    // private ComprasproductoPK id;
+    @EmbeddedId
+    private ComprasproductoPK id;
     @Column(name="cantidad")
     private Integer cantidad;
     @Column(name="total")
