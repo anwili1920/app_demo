@@ -16,7 +16,7 @@ public class Categoria {
     private String descripcion;
     
     @Column(name ="estado")
-    private Boolean estado;
+    private Integer estado;
 
     @OneToMany(mappedBy="categoria")
     private List<Producto> productos;

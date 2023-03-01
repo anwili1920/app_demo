@@ -25,7 +25,7 @@ public class Compra {
     @Column(name="comentario")
     private String comentario;
     @Column(name="estado")
-    private String estado;
+    private Integer estado;
 
     @ManyToOne
     @JoinColumn(name="fid_cliente",insertable=false,updatable=false)

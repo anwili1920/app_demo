@@ -14,7 +14,7 @@ public class ComprasProducto {
     @Column(name="total")
     private Double total;
     @Column(name="estado")
-    private Boolean estado;
+    private Integer estado;
 
     @ManyToOne
     @JoinColumn(name="fid_compra", insertable=false,updatable=false)
