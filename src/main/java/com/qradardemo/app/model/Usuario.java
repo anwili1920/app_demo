@@ -23,7 +23,7 @@ public class Usuario {
     @Column(name="activo")
     private Boolean activo; 
 
-    @OneToMany(mappedBy="usuario")
-    private List<Compra> tarjetas;
+    // @OneToMany(mappedBy="usuario")
+    // private List<Compra> tarjetas;
 
 }

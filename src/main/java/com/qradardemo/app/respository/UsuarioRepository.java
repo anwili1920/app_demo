@@ -7,6 +7,14 @@ import org.springframework.stereotype.Repository;
 import com.qradardemo.app.model.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario,Long>{
-    Optional<Usuario> findByEmail(String email);
+public class UsuarioRepository{
+    public Usuario findByEmail(String email){
+
+        return null;
+    }
 }
+
+/*
+ public interface UsuarioRepository extends JpaRepository<Usuario,Integer>{
+    Optional<Usuario> findByEmail(String email);
+ */

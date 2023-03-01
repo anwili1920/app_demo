@@ -17,8 +17,8 @@ public class Tarjeta {
     @Column(name ="numero_tarjeta")
     private String numeroTarjeta; 
     
-    @ManyToOne
-    @JoinColumn(name="fid_usuario",insertable=false,updatable=false)
-    private Usuario usuario;
+    // @ManyToOne
+    // @JoinColumn(name="fid_usuario",insertable=false,updatable=false)
+    // private Usuario usuario;
 
 }

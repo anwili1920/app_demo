@@ -27,10 +27,10 @@ public class Compra {
     @Column(name="estado")
     private Integer estado;
 
-    @ManyToOne
-    @JoinColumn(name="fid_cliente",insertable=false,updatable=false)
-    private Cliente cliente;
+    // @ManyToOne
+    // @JoinColumn(name="fid_cliente",insertable=false,updatable=false)
+    // private Cliente cliente;
 
-    @OneToMany(mappedBy = "producto")
-    private List<ComprasProducto> productos;
+    // @OneToMany(mappedBy = "producto")
+    // private List<ComprasProducto> productos;
 }

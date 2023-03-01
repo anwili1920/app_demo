@@ -14,10 +14,10 @@ public class Categoria {
 
     @Column(name ="descripcion")
     private String descripcion;
-    
+
     @Column(name ="estado")
     private Integer estado;
 
-    @OneToMany(mappedBy="categoria")
-    private List<Producto> productos;
+    // @OneToMany(mappedBy="categoria")
+    // private List<Producto> productos;
 }

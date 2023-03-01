@@ -27,7 +27,7 @@ public class Cliente {
 
     private Usuario usuario;
 
-    @OneToMany(mappedBy="cliente")
-    private List<Compra> compras;
+    // @OneToMany(mappedBy="cliente")
+    // private List<Compra> compras;
 
 }
