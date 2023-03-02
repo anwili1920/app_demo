@@ -1,7 +1,7 @@
 package com.qradardemo.app.model;
 import java.io.Serializable;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 @Embeddable
 public class ComprasproductoPK  implements Serializable {
     @Column(name="fid_compra")
