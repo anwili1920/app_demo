@@ -26,6 +26,6 @@ public class LoginImpl {
         map.put("sub", usuario.getId());
         map.put("correo", usuario.getEmail());
         long exp = 3600; 
-        return new LoginResponseDTO(JWTUtils.build(exp, map, "123"));
+        return new LoginResponseDTO(JWTUtils.build(exp, map, "108165236279178312660610114131826512483935470542850824183737259708197206310322"));
     } 
 }

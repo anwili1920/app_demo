@@ -12,6 +12,8 @@ public class Cliente {
 	@Column(name ="id_cliente")
 	private Integer idCliente; 
 
+    @Column(name ="dni")
+    private Integer dni;
     @Column(name ="nombre1")
     private String nombre1;
     @Column(name ="nombre2")
@@ -25,7 +27,7 @@ public class Cliente {
     @Column(name ="direccion")
     private String direccion;
 
-    private Usuario usuario;
+    // private Usuario usuario;
 
     // @OneToMany(mappedBy="cliente")
     // private List<Compra> compras;
