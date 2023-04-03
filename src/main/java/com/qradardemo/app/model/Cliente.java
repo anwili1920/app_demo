@@ -1,6 +1,8 @@
 package com.qradardemo.app.model;
 //import java.util.List;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.*;
 @Entity
@@ -29,7 +31,7 @@ public class Cliente {
 
     // private Usuario usuario;
 
-    // @OneToMany(mappedBy="cliente")
-    // private List<Compra> compras;
+    @OneToMany(mappedBy="cliente")
+    private List<Compra> compras;
 
 }

@@ -1,6 +1,7 @@
 package com.qradardemo.app.model;
 import java.time.LocalDateTime;
 //import java.util.List;
+import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,10 +28,10 @@ public class Compra {
     @Column(name="estado")
     private Integer estado;
 
-    // @ManyToOne
-    // @JoinColumn(name="fid_cliente",insertable=false,updatable=false)
-    // private Cliente cliente;
+    @ManyToOne
+    @JoinColumn(name="fid_cliente",insertable=false,updatable=false)
+    private Cliente cliente;
 
-    // @OneToMany(mappedBy = "producto")
-    // private List<ComprasProducto> productos;
+    @OneToMany(mappedBy = "compra")
+    private List<ComprasProducto> productos;
 }

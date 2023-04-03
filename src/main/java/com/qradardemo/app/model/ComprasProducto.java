@@ -16,10 +16,10 @@ public class ComprasProducto {
     @Column(name="estado")
     private Integer estado;
 
-    // @ManyToOne
-    // @JoinColumn(name="fid_compra", insertable=false,updatable=false)
-    // private Compra compra;
-    // @ManyToOne
-    // @JoinColumn(name="fid_producto",insertable=false,updatable=false)
-    // private Producto producto;
+    @ManyToOne
+    @JoinColumn(name="fid_compra", insertable=false,updatable=false)
+    private Compra compra;
+    @ManyToOne
+    @JoinColumn(name="fid_producto",insertable=false,updatable=false)
+    private Producto producto;
 }

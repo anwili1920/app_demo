@@ -1,4 +1,6 @@
 package com.qradardemo.app.model;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.*;
 //import java.util.List;
@@ -18,6 +20,6 @@ public class Categoria {
     @Column(name ="estado")
     private Integer estado;
 
-    // @OneToMany(mappedBy="categoria")
-    // private List<Producto> productos;
+    @OneToMany(mappedBy="categoria")
+    private List<Producto> productos;
 }
