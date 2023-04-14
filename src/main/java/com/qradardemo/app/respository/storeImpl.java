@@ -13,6 +13,7 @@ import com.qradardemo.app.dto.buyProductsDTO;
 import com.qradardemo.app.model.Cliente;
 import com.qradardemo.app.model.Compra;
 import com.qradardemo.app.model.ComprasProducto;
+import com.qradardemo.app.model.ComprasproductoPK;
 import com.qradardemo.app.model.Producto;
 
 import lombok.AllArgsConstructor;
@@ -41,8 +42,8 @@ public class StoreImpl implements StoreDAO {
         nuevacompra.setMedioPago("T");
         nuevacompra.setFecha(LocalDateTime.now());
         nuevacompra.setIdCliente(clientecompra.getIdCliente());
-        compras.save(nuevacompra);
         
+        compras.save(nuevacompra);
         List<ItemDTO> productosSelect= carrito.getCarrito();
         List<ComprasProducto> items= new ArrayList<ComprasProducto>();
         for(ItemDTO item: productosSelect){
@@ -51,10 +52,12 @@ public class StoreImpl implements StoreDAO {
             it.setCantidad(item.getCantidad());
             Producto producto = infoProducto(item);
             it.setProducto(producto);
+            //it.setId(new ComprasproductoPK(nuevacompra.getIdCompra(),producto.getIdProducto()));
             it.setTotal(it.getCantidad()*it.getProducto().getPrecioVenta());
             items.add(it);
         }
-        //nuevacompra.setProductos(items);
+        nuevacompra.setProductos(items);
+        //compras.save(nuevacompra);
         comprasxproductosrepo.saveAll(items);
         return nuevacompra;
     }

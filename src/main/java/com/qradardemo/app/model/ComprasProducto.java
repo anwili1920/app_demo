@@ -7,8 +7,12 @@ import lombok.*;
 @Table(name="compras_productos")
 @Getter @Setter @NoArgsConstructor
 public class ComprasProducto {
-    @EmbeddedId
-    private ComprasproductoPK id;
+    // @EmbeddedId
+    // private ComprasproductoPK id;
+    @Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name ="id_cliente")
+	private Integer idCliente; 
     @Column(name="cantidad")
     private Integer cantidad;
     @Column(name="total")
