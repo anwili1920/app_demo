@@ -15,7 +15,7 @@ public class Compra {
 	private Integer idCompra;
     
     @Column(name="fid_cliente")
-    private String idCliente;
+    private Integer idCliente;
 
     @Column(name = "fecha")
     private  LocalDateTime fecha;

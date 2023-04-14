@@ -7,7 +7,7 @@ import com.qradardemo.app.dto.buyProductsDTO;
 import com.qradardemo.app.model.Compra;
 import com.qradardemo.app.model.Producto; 
 
-public interface storeDAO {
+public interface StoreDAO {
     public Compra realizarCompra(buyProductsDTO carrito);
     public Producto infoProducto(ItemDTO item);
 }
