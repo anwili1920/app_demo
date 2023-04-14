@@ -52,13 +52,14 @@ public class StoreImpl implements StoreDAO {
             it.setCantidad(item.getCantidad());
             Producto producto = infoProducto(item);
             it.setProducto(producto);
+            
             //it.setId(new ComprasproductoPK(nuevacompra.getIdCompra(),producto.getIdProducto()));
             it.setTotal(it.getCantidad()*it.getProducto().getPrecioVenta());
             items.add(it);
         }
         nuevacompra.setProductos(items);
-        //compras.save(nuevacompra);
-        comprasxproductosrepo.saveAll(items);
+        compras.save(nuevacompra);
+        
         return nuevacompra;
     }
     @Override

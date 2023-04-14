@@ -11,8 +11,8 @@ public class ComprasProducto {
     // private ComprasproductoPK id;
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name ="id_cliente")
-	private Integer idCliente; 
+	@Column(name ="id_compras_producto")
+	private Integer idComprasProducto; 
     @Column(name="cantidad")
     private Integer cantidad;
     @Column(name="total")
@@ -20,10 +20,10 @@ public class ComprasProducto {
     @Column(name="estado")
     private Integer estado;
 
-    @ManyToOne
-    @JoinColumn(name="fid_compra", insertable=false,updatable=false)
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="fid_compra")
     private Compra compra;
-    @ManyToOne
-    @JoinColumn(name="fid_producto",insertable=false,updatable=false)
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="fid_producto")
     private Producto producto;
 }

@@ -31,6 +31,7 @@ public class BuyApis {
     @PostMapping("/buyproducts")
     public Compra comprarProductos(@RequestBody buyProductsDTO carrito){  
         StoreDAO comprar = new StoreImpl(template,compras,productos,comprasxproductosrepo,clientes);
-        return  comprar.realizarCompra(carrito);
+        Compra resultado= comprar.realizarCompra(carrito);
+        return  resultado;
     }
 }
