@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.qradardemo.app.dao.StoreDAO;
 import com.qradardemo.app.dto.ItemDTO;
+import com.qradardemo.app.dto.ResponseBuyList;
 import com.qradardemo.app.dto.buyProductsDTO;
 import com.qradardemo.app.model.Cliente;
 import com.qradardemo.app.model.Compra;
-import com.qradardemo.app.model.ComprasProducto;
-import com.qradardemo.app.model.ComprasproductoPK;
+import com.qradardemo.app.model.ComprasProducto; 
 import com.qradardemo.app.model.Producto;
 
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ public class StoreImpl implements StoreDAO {
     private ComprasProductoRepository comprasxproductosrepo;
     private ClienteRepository clientes;
     @Override
-    public Compra realizarCompra(buyProductsDTO carrito){
+    public ResponseBuyList realizarCompra(buyProductsDTO carrito){
         //INSERT INTO BASE_DATOS.COMPRAS(fid_cliente,fecha,medio_pago,comentario) VALUES (3,TO_DATE('2022-12-11', 'YYYY-MM-DD'),'T','RECOJO EN TIENDA');
         Compra nuevacompra= new Compra();
         Cliente clientecompra=  clientes.findByDni(carrito.getCliente().getDni());
@@ -36,31 +36,37 @@ public class StoreImpl implements StoreDAO {
             clientecompra=  clientes.findByDni(carrito.getCliente().getDni());
         }
         //clientes.findOne(); //carrito.getCliente().getDni()
-        nuevacompra.setCliente(clientecompra);
+        
         nuevacompra.setComentario("Esta es un intento de compra");
         nuevacompra.setEstado(1);
         nuevacompra.setMedioPago("T");
         nuevacompra.setFecha(LocalDateTime.now());
-        nuevacompra.setIdCliente(clientecompra.getIdCliente());
+        //nuevacompra.setIdCliente(clientecompra.getIdCliente());
         
         compras.save(nuevacompra);
         List<ItemDTO> productosSelect= carrito.getCarrito();
         List<ComprasProducto> items= new ArrayList<ComprasProducto>();
         for(ItemDTO item: productosSelect){
             ComprasProducto it=new ComprasProducto();
-            it.setCompra(nuevacompra);
+            nuevacompra.setCliente(clientecompra);
             it.setCantidad(item.getCantidad());
             Producto producto = infoProducto(item);
             it.setProducto(producto);
-            
+            it.setCompra(nuevacompra);
+
             //it.setId(new ComprasproductoPK(nuevacompra.getIdCompra(),producto.getIdProducto()));
             it.setTotal(it.getCantidad()*it.getProducto().getPrecioVenta());
             items.add(it);
         }
         nuevacompra.setProductos(items);
         compras.save(nuevacompra);
-        
-        return nuevacompra;
+        //Compra resultado = compras.getReferenceById(nuevacompra.getIdCompra());
+        ResponseBuyList resultado = new ResponseBuyList();
+        Cliente clienteaux = new Cliente();
+        clientecompra.setCompras(null);
+        resultado.setCliente(clientecompra);
+        resultado.setCompra(nuevacompra);
+        return resultado;
     }
     @Override
     public Producto infoProducto(ItemDTO item) {

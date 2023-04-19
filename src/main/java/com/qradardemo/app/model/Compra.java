@@ -3,6 +3,8 @@ import java.time.LocalDateTime;
 //import java.util.List;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 @Entity
@@ -14,8 +16,8 @@ public class Compra {
 	@Column(name ="id_compra")
 	private Integer idCompra;
     
-    @Column(name="fid_cliente")
-    private Integer idCliente;
+    // @Column(name="fid_cliente")
+    // private Integer idCliente;
 
     @Column(name = "fecha")
     private  LocalDateTime fecha;
@@ -30,6 +32,8 @@ public class Compra {
 
     @ManyToOne
     @JoinColumn(name="fid_cliente",insertable=false,updatable=false)
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Cliente cliente;
 
     @OneToMany(mappedBy = "compra",cascade = CascadeType.ALL)

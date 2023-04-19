@@ -22,8 +22,13 @@ public class ComprasProducto {
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="fid_compra")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Compra compra;
+    
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="fid_producto")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Producto producto;
 }
