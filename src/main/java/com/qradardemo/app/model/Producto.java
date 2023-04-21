@@ -1,5 +1,8 @@
 package com.qradardemo.app.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,7 +29,8 @@ public class Producto {
 	
 	@Column(name="estado")
 	private Integer estado;
-
+	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="fid_categoria",insertable=false, updatable=false)
 	private Categoria categoria;

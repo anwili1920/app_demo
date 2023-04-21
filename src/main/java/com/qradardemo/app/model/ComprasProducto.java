@@ -1,5 +1,9 @@
 package com.qradardemo.app.model; 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,16 +23,14 @@ public class ComprasProducto {
     private Double total;
     @Column(name="estado")
     private Integer estado;
-
+    
+    @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="fid_compra")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private Compra compra;
     
+    @JsonBackReference
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="fid_producto")
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private Producto producto;
 }

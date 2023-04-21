@@ -3,7 +3,10 @@ import java.time.LocalDateTime;
 //import java.util.List;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -29,13 +32,13 @@ public class Compra {
     private String comentario;
     @Column(name="estado")
     private Integer estado;
-
+   
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="fid_cliente",insertable=false,updatable=false)
-    @EqualsAndHashCode.Exclude
-    @ToString.Exclude
     private Cliente cliente;
-
+    
+    @JsonManagedReference 
     @OneToMany(mappedBy = "compra",cascade = CascadeType.ALL)
     private List<ComprasProducto> productos;
 }

@@ -3,6 +3,10 @@ package com.qradardemo.app.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 import lombok.*;
 @Entity
@@ -30,8 +34,9 @@ public class Cliente {
     private String direccion;
 
     // private Usuario usuario;
-
-    @OneToMany(mappedBy="cliente")
+    @JsonManagedReference
+    @OneToMany(mappedBy="cliente", fetch = FetchType.LAZY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<Compra> compras;
 
 }

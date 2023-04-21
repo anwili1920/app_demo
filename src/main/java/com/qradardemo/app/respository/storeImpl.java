@@ -63,7 +63,8 @@ public class StoreImpl implements StoreDAO {
         //Compra resultado = compras.getReferenceById(nuevacompra.getIdCompra());
         ResponseBuyList resultado = new ResponseBuyList();
         Cliente clienteaux = new Cliente();
-        clientecompra.setCompras(null);
+        clientecompra.setCompras(null);// en este caso porquqe el servicio no lo necesita
+        nuevacompra.setCliente(null);
         resultado.setCliente(clientecompra);
         resultado.setCompra(nuevacompra);
         return resultado;
